@@ -32,3 +32,5 @@ jobs:
         echo GITHUB_REF=${GITHUB_REF}
         echo EXTRACT_GITHUB_REF=${GITHUB_REF##*/}
         echo EXTRACT_GITHUB_REF_HEADS=$(echo ${GITHUB_REF#refs/heads/})
+        ARG="--build-arg GITHUB_REF=${GITHUB_REF##*/} --build-arg GITHUB_SHA=$GITHUB_SHA"
+        echo $ARG
