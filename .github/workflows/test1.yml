@@ -15,4 +15,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - run: echo Update Dep ${{ github.event.event_type }} - ${{ github.event.client_payload.name }}
+      - run: |
+          echo EventType ${{ github.event.event_type }} 
+          echo Payload.name - ${{ github.event.client_payload.name }}
