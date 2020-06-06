@@ -15,4 +15,4 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - run: echo Update Dep ${{ github.event.client_payload }}
+      - run: echo Update Dep ${{ github.event.client_payload.event_type }} - ${{ github.event.client_payload.client_payload.name }}
