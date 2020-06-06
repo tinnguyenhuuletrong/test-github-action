@@ -18,12 +18,10 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: "12.x"
-      - name: Info
+      - name: Update dependencies
       - run: |
           echo Payload.name - ${{ github.event.client_payload.name }}
           date +%s > report.txt
-      - name: Update dependencies
-        run: |
           npx -p npm-check-updates ncu -u
           npm install
       - name: Create Pull Request
