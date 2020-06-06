@@ -19,7 +19,7 @@ jobs:
         with:
           node-version: "12.x"
       - name: Update dependencies
-      - run: |
+        run: |
           echo Payload.name - ${{ github.event.client_payload.name }}
           date +%s > report.txt
           npx -p npm-check-updates ncu -u
