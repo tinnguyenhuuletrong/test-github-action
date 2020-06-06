@@ -15,9 +15,17 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: "12.x"
+      - name: Info
       - run: |
           echo Payload.name - ${{ github.event.client_payload.name }}
           date +%s > report.txt
+      - name: Update dependencies
+        run: |
+          npx -p npm-check-updates ncu -u
+          npm install
       - name: Create Pull Request
         id: cpr
         uses: peter-evans/create-pull-request@v2
@@ -26,7 +34,7 @@ jobs:
           commit-message: Add report file
           committer: GitHub <noreply@github.com>
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
-          title: "[Example] Add report file"
+          title: "[Example] Add report file ${{ github.event.client_payload.name }}"
           body: |
             New report
             - Contains *today's* date
